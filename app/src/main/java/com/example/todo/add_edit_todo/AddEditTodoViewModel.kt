@@ -38,9 +38,9 @@ class AddEditTodoViewModel @Inject constructor(
 
         if ( todoId != -1 ) {
             viewModelScope.launch {
-                repository.getTodoById(todoId)?.let {
-                    title = todo!!.title
-                    description = todo!!.description ?: ""
+                repository.getTodoById(todoId).let {
+                    title = it.title
+                    description = it.description
                     this@AddEditTodoViewModel.todo = todo
                 }
             }

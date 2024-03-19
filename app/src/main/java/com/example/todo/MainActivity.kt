@@ -39,12 +39,13 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     composable(Routes.TODO_LIST) {
-
                         TodoListScreen( onNavigate = { navController.navigate( it.route ) } )
+                        val route = navController.currentBackStackEntry?.destination?.route
+                        println("+++++++++++++++Route is: " + route)
                     }
 
                     composable(
-                        route = Routes.ADD_EDIT_TODO + "?todoId = {todoId}",
+                        route = Routes.ADD_EDIT_TODO + "?todoId={todoId}",
                         arguments = listOf(
                             navArgument(name = "todoId"){
                                 type = NavType.IntType
@@ -52,8 +53,9 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ){
-
                         AddEditTodoScreen( onPopBackStack = { navController.popBackStack() } )
+                        val route = navController.currentBackStackEntry?.destination?.route
+                        println("+++++++++++++++Route is: " + route)
                     }
 
                 }

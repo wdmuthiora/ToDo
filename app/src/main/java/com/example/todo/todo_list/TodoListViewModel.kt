@@ -30,9 +30,11 @@ class TodoListViewModel @Inject constructor(
         when(event){
 
             is TodoListEvent.onTodoClick -> {
+
                 sendUiEvent(
                     UiEvent.Navigate(Routes.ADD_EDIT_TODO + "?todoId=${event.todo.id}")
                 )
+
             }
 
             is TodoListEvent.OnAddTodoClick -> {
@@ -55,12 +57,13 @@ class TodoListViewModel @Inject constructor(
                     repository.deleteTodo(
                         event.todo
                     )
-                    sendUiEvent(
-                        UiEvent.ShowSnackBar(
-                            "Todo deleted",
-                            "undo")
-                    )
                 }
+                sendUiEvent(
+                    UiEvent.ShowSnackBar(
+                        "Todo deleted",
+                        "undo")
+                )
+
             }
 
             is TodoListEvent.OnDoneChange -> {

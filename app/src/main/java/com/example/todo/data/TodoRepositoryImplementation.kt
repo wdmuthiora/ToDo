@@ -2,9 +2,7 @@ package com.example.todo.data
 
 import kotlinx.coroutines.flow.Flow
 
-class TodoRepositoryImplementation(
-    private val dao:TodoDao
-):TodoRepository {
+class TodoRepositoryImplementation( private val dao:TodoDao ):TodoRepository {
     override suspend fun insertTodo(todo: Todo) {
         dao.insertTodo(todo)
     }
